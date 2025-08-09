@@ -1,0 +1,42 @@
+gateway
+senha para resetar 12345678
+
+
+# Dados sobre os tratamentos:
+
+# GRANJA DARLAN SIMON
+
+## Lote 1204/24 - alojamento 12/05/2025
+linhagem ROSS
+ChipId: f001f9 (24M0003) - aviario 1204
+Tratamento: TESTEMUNHA
+SSID:Feira2025 / senha:feira123#
+abate:29/06/2025
+Cama: 6
+ 
+## Lote 1203/24 - alojamento 12/05/2025
+linhagem ROSS
+ChipId - 35a386 (24M0004)- aviario 1203 
+Tratamento: DIATEX
+SSID - 351386 / senha:12345678
+abate:29/06/2025
+Cama: 6
+
+# GRANJA FAMILIA BELTRAMIN
+
+## Lote 1262/19 - alojamento 09/07/2025
+linhagem XXXX
+ChipId - effd32 (24M0009)- aviario 1262 
+Tratamento: DIATEX
+SSID - Aviario / senha:1234567890
+abate:
+Cama: 7
+
+## Lote 1263/19 - alojamento 09/07/2025
+linhagem XXXXX
+ChipId - ef8965 (24M0002)- aviario 1263 
+Tratamento: TESTEMUNHA
+SSID -  / senha:1234567890
+abate:
+Cama: 7
+
