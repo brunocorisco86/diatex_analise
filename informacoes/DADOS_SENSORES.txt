@@ -40,3 +40,22 @@ SSID -  / senha:1234567890
 abate:
 Cama: 7
 
+
+
+# GRANJA FAMILIA BASSO
+
+## Lote 1282/19 - alojamento 20/08/2025
+linhagem COBB MALE
+ChipId - effd32 (24M0009)- aviario 1282 
+Tratamento: TESTEMUNHA
+SSID - Aviario1282 / senha:12345678
+abate:
+Cama: 5
+
+## Lote 1283/19 - alojamento 20/08/2025
+linhagem COBB MALE
+ChipId - ef8965 (24M0002)- aviario 1283 
+Tratamento: CLIMA 200
+SSID -  Aviario1283/ senha:12345678
+abate:
+Cama: 5
