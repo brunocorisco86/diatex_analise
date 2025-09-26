@@ -44,11 +44,11 @@ O sistema completo inclui a extração de dados de relatórios em PDF, o process
 ### Execução
 
 1. **Extrair os dados dos PDFs (se necessário)**:
-   Coloque os arquivos PDF na pasta `pdf` e execute o script:
+   Coloque os arquivos PDF na pasta `data/raw/pdf` (seguindo o padrão de nomes documentado em `docs/padrao_nomes_pdf.md`) e execute o script:
    ```bash
-   python extract_tables2.py
+   python src/extract_tables2.py
    ```
-   Isso irá gerar os arquivos CSV na pasta `csv` e o banco de dados `TESTE_DIATEX.db` na pasta `database`.
+   Isso irá gerar os arquivos CSV na pasta `data/raw/csv` e o banco de dados `TESTE_DIATEX.db` na pasta `database`.
 
 2. **Executar a aplicação web**:
    ```bash
@@ -68,17 +68,21 @@ O sistema completo inclui a extração de dados de relatórios em PDF, o process
 .
 ├── analise_diatex.ipynb      # Notebook para análise de dados
 ├── app_cloud.py              # Aplicação web com Streamlit
-├── extract_tables2.py        # Script para extrair dados dos PDFs
 ├── requirements.txt          # Dependências do projeto
+├── src/
+│   ├── extract_tables2.py    # Script para extrair dados dos PDFs
+│   └── utils/
+│       └── logger.py         # Módulo de configuração de logger
 ├── database/                   # Arquivos de banco de dados e scripts SQL
 │   ├── TESTE_DIATEX.db       # Banco de dados SQLite
 │   └── ...
-├── csv/                        # Arquivos CSV com dados extraídos
-│   └── ...
-├── pdf/                        # Relatórios em PDF
-│   └── ...
-├── informacoes/                # Arquivos de texto com informações adicionais
-├── fotos/                      # Fotos relacionadas ao projeto
+├── data/
+│   ├── raw/
+│   │   ├── csv/              # Arquivos CSV com dados brutos extraídos
+│   │   └── pdf/              # Relatórios em PDF (ver padrão de nomes em docs/padrao_nomes_pdf.md)
+│   └── processed/            # Dados processados
+├── docs/
+│   └── padrao_nomes_pdf.md   # Documentação sobre o padrão de nomes dos arquivos PDF
 └── README.md                   # Este arquivo
 ```
 
