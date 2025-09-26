@@ -29,7 +29,7 @@ CREATE TABLE tratamentos (
 	id_sensor VARCHAR(512) --nome do sensor
 );
 
--- Adicionar abaixo os dados do lote
+-- Adicionar abaixo os dados dos lotes
 
 -- DARLAN SIMON
 -- lote 1203-24
@@ -48,13 +48,35 @@ VALUES ('aviario_1203','1203-25',2,'2025-07-17','2025-08-08','ROSS','DIATEX','DA
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
 VALUES ('aviario_1204','1204-25',2,'2025-07-17','2025-08-08','ROSS','TESTEMUNHA','DARLAN SIMON',7,'','','','','','','','','','','','','','','','','24M0003');
 
+-- lote 1203-26 (lote 2)
+INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor) 
+VALUES ('aviario_1203','1203-25',3,'2025-09-17','','','DIATEX','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0004');
+
+-- lote 1204-26 (lote 2)
+INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
+VALUES ('aviario_1204','1204-25',3,'2025-09-17','','','TESTEMUNHA','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0003');
+
+-- GRANJA FAMILIA BELTRAMIN
+
 -- lote 1263-19
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
 VALUES ('aviario_1263','1263-19',1,'2025-07-09','2025-08-08','MISTO','TESTEMUNHA','FAMILIA BELTRAMIN',7, 32600, '','','','','','','','','','','','','','','','24M0002');
 
 -- lote 1262-19
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
-VALUES ('aviario_1262','1262-19',1,'2025-07-09','2025-08-08','COBB MALE','DIATEX','FAMILIA BELTRAMIN',7,32600,'','','','','','','','','','','','','','','','24M0009');
+VALUES ('aviario_1262','1262-19',1,'2025-08-20','','COBB MALE','DIATEX','FAMILIA BELTRAMIN',7,32600,'','','','','','','','','','','','','','','','24M0009');
+
+-- GRANJA FAMILIA BASSO
+
+-- LOTE 1282-19
+INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
+VALUES ('aviario_1282','1282-19',1,'2025-08-20','','COBB MALE','TESTEMUNHA','JAIME BASSO',5,'', '','','','','','','','','','','','','','','','24M0009');
+
+
+-- LOTE 1283-19
+INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
+VALUES ('aviario_1282','1283-19',1,'2025-08-20','','COBB MALE','TESTEMUNHA','JAIME BASSO',5,'', '','','','','','','','','','','','','','','','24M0002');
+
 
 -- Adicionar o fator de ganho dos lotes
 -- Criar colunas
@@ -99,23 +121,6 @@ SET fator_ganho_7d = CASE
                          ELSE NULL
                       END;
 					  
-					  
-/*
--- CRIAR UM ALTER TABLE PARA INCLUIR A COLUNA DE LOTE COMPOSTO NA TABELA MEDICOES
-
-ALTER TABLE medicoes ADD COLUMN lote_composto VARCHAR(512);
-
-UPDATE medicoes
-SET lote_composto = (
-    SELECT t.lote_composto
-    FROM tratamentos t
-    WHERE t.aviario = medicoes.Nome_Arquivo
-    AND medicoes.Fecha >= t.data_alojamento
-    AND (medicoes.Fecha <= t.data_retirada OR t.data_retirada IS NULL OR t.data_retirada = '')
-);
-
-*/
-
 -- TRECHO AJUSTADO
 
 ALTER TABLE medicoes ADD COLUMN lote_composto VARCHAR(512);
@@ -139,15 +144,3 @@ SET
             AND medicoes.Fecha BETWEEN t.data_alojamento AND COALESCE(t.data_retirada, '9999-12-31')
     );
 
-/*
--- 	INSERIR UMA COLUNA PARA O TRATAMENTO NA TABELA MEDIÇÕES
-
-ALTER TABLE medicoes ADD COLUMN teste VARCHAR(512);
-
-UPDATE medicoes
-SET teste = (
-    SELECT t.teste
-    FROM tratamentos t
-    WHERE t.lote_composto = medicoes.lote_composto
-);
-*/
