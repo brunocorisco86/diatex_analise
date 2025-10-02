@@ -50,11 +50,11 @@ VALUES ('aviario_1204','1204-25',2,'2025-07-17','2025-08-08','ROSS','TESTEMUNHA'
 
 -- lote 1203-26 (lote 2)
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor) 
-VALUES ('aviario_1203','1203-25',3,'2025-09-17','','','DIATEX','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0004');
+VALUES ('aviario_1203','1203-26',3,'2025-09-17','','','DIATEX','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0004');
 
 -- lote 1204-26 (lote 2)
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
-VALUES ('aviario_1204','1204-25',3,'2025-09-17','','','TESTEMUNHA','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0003');
+VALUES ('aviario_1204','1204-26',3,'2025-09-17','','','TESTEMUNHA','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0003');
 
 -- GRANJA FAMILIA BELTRAMIN
 

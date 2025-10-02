@@ -1,0 +1,746 @@
+2025-09-26 10:05:31,307 - extract_tables2 - INFO - Iniciando extração em lote de PDFs...
+2025-09-26 10:05:31,307 - extract_tables2 - INFO - Processando PDFs na pasta: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf
+2025-09-26 10:05:31,307 - extract_tables2 - INFO - Encontrados 10 arquivos PDF: ['/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt1.pdf']
+2025-09-26 10:05:31,307 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf
+2025-09-26 10:05:31,322 - extract_tables2 - INFO - Extraindo páginas: 5-244 (total estimado: 244)
+2025-09-26 10:05:31,323 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:06:06,756 - extract_tables2 - INFO - Encontradas 240 tabelas com método stream
+2025-09-26 10:06:06,823 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:06:06,823 - extract_tables2 - INFO - 0    17,8 °C
+1    17,5 °C
+2    17,5 °C
+3    17,5 °C
+4    17,5 °C
+5    17,5 °C
+6    17,3 °C
+7    17,3 °C
+8    17,3 °C
+9      17 °C
+2025-09-26 10:06:06,853 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:06:06,856 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02    6  25-0 ppm         17.8          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:05    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:08    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:11    6  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:14    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:17    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:20    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:23    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:26    5  25-0 ppm         17.3          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:29    4  25-0 ppm         17.0          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-09-26 10:06:06,859 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf
+2025-09-26 10:06:06,871 - extract_tables2 - INFO - Extraindo páginas: 5-218 (total estimado: 218)
+2025-09-26 10:06:06,871 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:06:46,351 - extract_tables2 - INFO - Encontradas 214 tabelas com método stream
+2025-09-26 10:06:46,413 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:06:46,414 - extract_tables2 - INFO - 0    17,5 °C
+1      18 °C
+2    18,8 °C
+3    19,5 °C
+4      20 °C
+5    20,5 °C
+6    20,8 °C
+7      21 °C
+8    21,5 °C
+9    21,8 °C
+2025-09-26 10:06:46,443 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:06:46,445 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-07 10:40    0  20-0 ppm         17.5          35-10 °C       69       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:43    0  20-0 ppm         18.0          35-10 °C       68       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:46    0  20-0 ppm         18.8          35-10 °C       65       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:49    0  20-0 ppm         19.5          35-10 °C       64       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:52    0  20-0 ppm         20.0          35-10 °C       63       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:55    0  20-0 ppm         20.5          35-10 °C       61       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:58    0  20-0 ppm         20.8          35-10 °C       60       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:01    0  20-0 ppm         21.0          35-10 °C       59       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:04    0  20-0 ppm         21.5          35-10 °C       59       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:07    0  20-0 ppm         21.8          35-10 °C       58       90-40 % aviario_1204_pt3 aviario_1204
+2025-09-26 10:06:46,448 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf
+2025-09-26 10:06:46,453 - extract_tables2 - INFO - Extraindo páginas: 5-88 (total estimado: 88)
+2025-09-26 10:06:46,453 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:06:58,967 - extract_tables2 - INFO - Encontradas 84 tabelas com método stream
+2025-09-26 10:06:59,010 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:06:59,011 - extract_tables2 - INFO - 0    17,3 °C
+1      17 °C
+2    17,3 °C
+3      17 °C
+4      17 °C
+5      17 °C
+6    16,8 °C
+7    16,8 °C
+8    16,5 °C
+9    16,5 °C
+2025-09-26 10:06:59,035 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:06:59,038 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-08-01 00:02    1  25-0 ppm         17.3          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:05    1  25-0 ppm         17.0          35-15 °C       56       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:08    1  25-0 ppm         17.3          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:11    1  25-0 ppm         17.0          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:14    1  25-0 ppm         17.0          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:17    1  25-0 ppm         17.0          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:20    1  25-0 ppm         16.8          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:23    1  25-0 ppm         16.8          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:26    1  25-0 ppm         16.5          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:29    1  25-0 ppm         16.5          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-09-26 10:06:59,040 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf
+2025-09-26 10:06:59,047 - extract_tables2 - INFO - Extraindo páginas: 5-126 (total estimado: 126)
+2025-09-26 10:06:59,048 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:07:17,270 - extract_tables2 - INFO - Encontradas 122 tabelas com método stream
+2025-09-26 10:07:17,304 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:07:17,304 - extract_tables2 - INFO - 0    20,5 °C
+1    21,5 °C
+2      21 °C
+3      21 °C
+4      21 °C
+5    21,3 °C
+6    21,5 °C
+7    21,5 °C
+8    21,5 °C
+9    21,8 °C
+2025-09-26 10:07:17,320 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:07:17,321 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-07 10:42    0  20-0 ppm         20.5          35-10 °C       67       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:45    0  20-0 ppm         21.5          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:50    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:55    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:00    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:05    0  20-0 ppm         21.3          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:10    0  20-0 ppm         21.5          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:15    0  20-0 ppm         21.5          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:20    0  20-0 ppm         21.5          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:25    0  20-0 ppm         21.8          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-09-26 10:07:17,323 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf
+2025-09-26 10:07:17,336 - extract_tables2 - INFO - Extraindo páginas: 5-244 (total estimado: 244)
+2025-09-26 10:07:17,336 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:07:54,250 - extract_tables2 - INFO - Encontradas 240 tabelas com método stream
+2025-09-26 10:07:54,314 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:07:54,314 - extract_tables2 - INFO - 0    18,3 °C
+1    18,3 °C
+2    18,3 °C
+3    18,3 °C
+4      18 °C
+5      18 °C
+6      18 °C
+7      18 °C
+8      18 °C
+9    17,8 °C
+2025-09-26 10:07:54,342 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:07:54,344 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02   12  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:05   11  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:08   13  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:11   12  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:14   11  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:17   12  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:20   10  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:23   12  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:26   12  25-0 ppm         18.0          35-15 °C       69       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:29   11  25-0 ppm         17.8          35-15 °C       67       90-35 % aviario_1263_pt1 aviario_1263
+2025-09-26 10:07:54,347 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf
+2025-09-26 10:07:54,354 - extract_tables2 - INFO - Extraindo páginas: 5-140 (total estimado: 140)
+2025-09-26 10:07:54,354 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:08:14,369 - extract_tables2 - INFO - Iniciando extração em lote de PDFs...
+2025-09-26 10:08:14,369 - extract_tables2 - INFO - Processando PDFs na pasta: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf
+2025-09-26 10:08:14,370 - extract_tables2 - INFO - Encontrados 10 arquivos PDF: ['/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt1.pdf']
+2025-09-26 10:08:14,370 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf
+2025-09-26 10:08:14,384 - extract_tables2 - INFO - Extraindo páginas: 5-244 (total estimado: 244)
+2025-09-26 10:08:14,384 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:08:54,901 - extract_tables2 - INFO - Encontradas 240 tabelas com método stream
+2025-09-26 10:08:54,972 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:08:54,972 - extract_tables2 - INFO - 0    17,8 °C
+1    17,5 °C
+2    17,5 °C
+3    17,5 °C
+4    17,5 °C
+5    17,5 °C
+6    17,3 °C
+7    17,3 °C
+8    17,3 °C
+9      17 °C
+2025-09-26 10:08:55,011 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:08:55,015 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02    6  25-0 ppm         17.8          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:05    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:08    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:11    6  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:14    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:17    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:20    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:23    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:26    5  25-0 ppm         17.3          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:29    4  25-0 ppm         17.0          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-09-26 10:08:55,018 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf
+2025-09-26 10:08:55,031 - extract_tables2 - INFO - Extraindo páginas: 5-218 (total estimado: 218)
+2025-09-26 10:08:55,031 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:09:22,763 - extract_tables2 - INFO - Encontradas 214 tabelas com método stream
+2025-09-26 10:09:22,826 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:09:22,827 - extract_tables2 - INFO - 0    17,5 °C
+1      18 °C
+2    18,8 °C
+3    19,5 °C
+4      20 °C
+5    20,5 °C
+6    20,8 °C
+7      21 °C
+8    21,5 °C
+9    21,8 °C
+2025-09-26 10:09:22,852 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:09:22,854 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-07 10:40    0  20-0 ppm         17.5          35-10 °C       69       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:43    0  20-0 ppm         18.0          35-10 °C       68       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:46    0  20-0 ppm         18.8          35-10 °C       65       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:49    0  20-0 ppm         19.5          35-10 °C       64       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:52    0  20-0 ppm         20.0          35-10 °C       63       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:55    0  20-0 ppm         20.5          35-10 °C       61       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:58    0  20-0 ppm         20.8          35-10 °C       60       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:01    0  20-0 ppm         21.0          35-10 °C       59       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:04    0  20-0 ppm         21.5          35-10 °C       59       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:07    0  20-0 ppm         21.8          35-10 °C       58       90-40 % aviario_1204_pt3 aviario_1204
+2025-09-26 10:09:22,857 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf
+2025-09-26 10:09:22,862 - extract_tables2 - INFO - Extraindo páginas: 5-88 (total estimado: 88)
+2025-09-26 10:09:22,862 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:09:33,435 - extract_tables2 - INFO - Encontradas 84 tabelas com método stream
+2025-09-26 10:09:33,456 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:09:33,457 - extract_tables2 - INFO - 0    17,3 °C
+1      17 °C
+2    17,3 °C
+3      17 °C
+4      17 °C
+5      17 °C
+6    16,8 °C
+7    16,8 °C
+8    16,5 °C
+9    16,5 °C
+2025-09-26 10:09:33,468 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:09:33,469 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-08-01 00:02    1  25-0 ppm         17.3          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:05    1  25-0 ppm         17.0          35-15 °C       56       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:08    1  25-0 ppm         17.3          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:11    1  25-0 ppm         17.0          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:14    1  25-0 ppm         17.0          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:17    1  25-0 ppm         17.0          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:20    1  25-0 ppm         16.8          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:23    1  25-0 ppm         16.8          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:26    1  25-0 ppm         16.5          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:29    1  25-0 ppm         16.5          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-09-26 10:09:33,470 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf
+2025-09-26 10:09:33,476 - extract_tables2 - INFO - Extraindo páginas: 5-126 (total estimado: 126)
+2025-09-26 10:09:33,477 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:09:48,919 - extract_tables2 - INFO - Encontradas 122 tabelas com método stream
+2025-09-26 10:09:48,950 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:09:48,950 - extract_tables2 - INFO - 0    20,5 °C
+1    21,5 °C
+2      21 °C
+3      21 °C
+4      21 °C
+5    21,3 °C
+6    21,5 °C
+7    21,5 °C
+8    21,5 °C
+9    21,8 °C
+2025-09-26 10:09:48,965 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:09:48,967 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-07 10:42    0  20-0 ppm         20.5          35-10 °C       67       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:45    0  20-0 ppm         21.5          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:50    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:55    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:00    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:05    0  20-0 ppm         21.3          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:10    0  20-0 ppm         21.5          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:15    0  20-0 ppm         21.5          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:20    0  20-0 ppm         21.5          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:25    0  20-0 ppm         21.8          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-09-26 10:09:48,969 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf
+2025-09-26 10:09:48,980 - extract_tables2 - INFO - Extraindo páginas: 5-244 (total estimado: 244)
+2025-09-26 10:09:48,980 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:10:21,004 - extract_tables2 - INFO - Encontradas 240 tabelas com método stream
+2025-09-26 10:10:21,072 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:10:21,072 - extract_tables2 - INFO - 0    18,3 °C
+1    18,3 °C
+2    18,3 °C
+3    18,3 °C
+4      18 °C
+5      18 °C
+6      18 °C
+7      18 °C
+8      18 °C
+9    17,8 °C
+2025-09-26 10:10:21,101 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:10:21,103 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02   12  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:05   11  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:08   13  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:11   12  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:14   11  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:17   12  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:20   10  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:23   12  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:26   12  25-0 ppm         18.0          35-15 °C       69       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:29   11  25-0 ppm         17.8          35-15 °C       67       90-35 % aviario_1263_pt1 aviario_1263
+2025-09-26 10:10:21,107 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf
+2025-09-26 10:10:21,114 - extract_tables2 - INFO - Extraindo páginas: 5-140 (total estimado: 140)
+2025-09-26 10:10:21,114 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:10:38,333 - extract_tables2 - INFO - Encontradas 136 tabelas com método stream
+2025-09-26 10:10:38,368 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:10:38,368 - extract_tables2 - INFO - 0    20,5 °C
+1    20,5 °C
+2    20,5 °C
+3    20,3 °C
+4    20,3 °C
+5      20 °C
+6    20,3 °C
+7    20,3 °C
+8      20 °C
+9      20 °C
+2025-09-26 10:10:38,385 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:10:38,386 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-06-01 00:02    1  20-0 ppm         20.5          35-10 °C       56       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:05    1  20-0 ppm         20.5          35-10 °C       56       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:08    2  20-0 ppm         20.5          35-10 °C       58       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:11    1  20-0 ppm         20.3          35-10 °C       56       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:14    2  20-0 ppm         20.3          35-10 °C       57       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:17    1  20-0 ppm         20.0          35-10 °C       58       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:20    1  20-0 ppm         20.3          35-10 °C       57       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:23    2  20-0 ppm         20.3          35-10 °C       59       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:26    1  20-0 ppm         20.0          35-10 °C       57       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:29    1  20-0 ppm         20.0          35-10 °C       58       90-40 % aviario_1204_pt2 aviario_1204
+2025-09-26 10:10:38,388 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt1.pdf
+2025-09-26 10:10:38,397 - extract_tables2 - INFO - Extraindo páginas: 5-189 (total estimado: 189)
+2025-09-26 10:10:38,398 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:11:02,176 - extract_tables2 - INFO - Encontradas 185 tabelas com método stream
+2025-09-26 10:11:02,227 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:11:02,227 - extract_tables2 - INFO - 0    31,5 °C
+1    31,3 °C
+2    31,5 °C
+3      32 °C
+4      32 °C
+5    31,8 °C
+6    31,8 °C
+7    32,3 °C
+8    32,3 °C
+9      32 °C
+2025-09-26 10:11:02,250 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:11:02,252 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-05-12 14:40   12 100-0 ppm         31.5           30-0 °C       42       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 14:45   12 100-0 ppm         31.3           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 14:50   11 100-0 ppm         31.5           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 14:55   10 100-0 ppm         32.0           30-0 °C       42       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:00   10 100-0 ppm         32.0           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:05   10 100-0 ppm         31.8           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:10    9 100-0 ppm         31.8           30-0 °C       44       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:15   10 100-0 ppm         32.3           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:17    9 100-0 ppm         32.3           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:17    9 100-0 ppm         32.0           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-09-26 10:11:02,254 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt2.pdf
+2025-09-26 10:11:02,258 - extract_tables2 - INFO - Extraindo páginas: 5-68 (total estimado: 68)
+2025-09-26 10:11:02,258 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:11:10,076 - extract_tables2 - INFO - Encontradas 64 tabelas com método stream
+2025-09-26 10:11:10,093 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:11:10,093 - extract_tables2 - INFO - 0    21,3 °C
+1    21,3 °C
+2      21 °C
+3      21 °C
+4    20,8 °C
+5    20,5 °C
+6    20,5 °C
+7    20,3 °C
+8      20 °C
+9    20,3 °C
+2025-09-26 10:11:10,102 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:11:10,104 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-06-01 00:02    2  20-0 ppm         21.3          35-10 °C       58       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:07    2  20-0 ppm         21.3          35-10 °C       58       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:17    3  20-0 ppm         21.0          35-10 °C       63       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:22    3  20-0 ppm         21.0          35-10 °C       60       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:32    2  20-0 ppm         20.8          35-10 °C       59       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:37    2  20-0 ppm         20.5          35-10 °C       59       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:42    2  20-0 ppm         20.5          35-10 °C       59       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 01:07    2  20-0 ppm         20.3          35-10 °C       60       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 01:12    2  20-0 ppm         20.0          35-10 °C       61       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 01:17    2  20-0 ppm         20.3          35-10 °C       61       90-40 % aviario_1203_pt2 aviario_1203
+2025-09-26 10:11:10,104 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt2.pdf
+2025-09-26 10:11:10,108 - extract_tables2 - INFO - Extraindo páginas: 5-79 (total estimado: 79)
+2025-09-26 10:11:10,108 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:11:21,080 - extract_tables2 - INFO - Encontradas 75 tabelas com método stream
+2025-09-26 10:11:21,101 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:11:21,102 - extract_tables2 - INFO - 0    17,8 °C
+1    17,3 °C
+2    17,5 °C
+3    17,3 °C
+4    17,3 °C
+5    17,3 °C
+6    16,8 °C
+7      17 °C
+8    16,8 °C
+9      17 °C
+2025-09-26 10:11:21,112 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:11:21,114 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-08-01 00:01    3  25-0 ppm         17.8          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:04    2  25-0 ppm         17.3          35-15 °C       57       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:07    2  25-0 ppm         17.5          35-15 °C       60       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:10    2  25-0 ppm         17.3          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:13    2  25-0 ppm         17.3          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:16    2  25-0 ppm         17.3          35-15 °C       61       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:19    2  25-0 ppm         16.8          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:22    2  25-0 ppm         17.0          35-15 °C       61       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:25    2  25-0 ppm         16.8          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:28    2  25-0 ppm         17.0          35-15 °C       60       90-35 % aviario_1263_pt2 aviario_1263
+2025-09-26 10:11:21,115 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt1.pdf
+2025-09-26 10:11:21,120 - extract_tables2 - INFO - Extraindo páginas: 5-90 (total estimado: 90)
+2025-09-26 10:11:21,120 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:11:35,620 - extract_tables2 - INFO - Encontradas 86 tabelas com método stream
+2025-09-26 10:11:35,644 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:11:35,644 - extract_tables2 - INFO - 0    30,5 °C
+1    31,5 °C
+2    32,5 °C
+3    30,8 °C
+4    29,8 °C
+5      30 °C
+6      30 °C
+7    30,3 °C
+8    30,3 °C
+9    30,5 °C
+2025-09-26 10:11:35,657 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:11:35,658 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-05-12 14:48    0 100-0 ppm         30.5           30-0 °C       44       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 14:53    0 100-0 ppm         31.5           30-0 °C       43       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 14:58    0 100-0 ppm         32.5           30-0 °C       41       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 15:16   10 100-0 ppm         30.8           30-0 °C       45       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:10   15  20-0 ppm         29.8           35-0 °C       54       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:15   14  20-0 ppm         30.0           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:20   12  20-0 ppm         30.0           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:25   12  20-0 ppm         30.3           35-0 °C       51       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:30   14  20-0 ppm         30.3           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:35   14  20-0 ppm         30.5           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-09-26 10:11:35,865 - extract_tables2 - INFO - Dados salvos em: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/csv/dados_medicoes_nh3_20250926_101135.csv
+2025-09-26 10:11:35,865 - extract_tables2 - INFO - Criando banco SQLite e tabela 'medicoes': /home/brunoconter/Code/Git/testeDiatexCama/database/TESTE_DIATEX.db
+2025-09-26 10:11:36,054 - extract_tables2 - INFO - Tabela 'medicoes' criada e dados inseridos com sucesso em: /home/brunoconter/Code/Git/testeDiatexCama/database/TESTE_DIATEX.db
+2025-09-26 10:11:36,058 - extract_tables2 - INFO - Resumo dos dados extraídos após tratamento (primeiras 10 linhas):
+2025-09-26 10:11:36,061 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02    6  25-0 ppm         17.8          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:05    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:08    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:11    6  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:14    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:17    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:20    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:23    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:26    5  25-0 ppm         17.3          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:29    4  25-0 ppm         17.0          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-09-26 10:11:36,075 - extract_tables2 - INFO - Processamento concluído com sucesso.
+2025-09-26 10:25:23,939 - extract_tables2 - INFO - Iniciando extração em lote de PDFs...
+2025-09-26 10:25:23,940 - extract_tables2 - INFO - Processando PDFs na pasta: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf
+2025-09-26 10:25:23,940 - extract_tables2 - INFO - Encontrados 10 arquivos PDF: ['/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt1.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt2.pdf', '/home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt1.pdf']
+2025-09-26 10:25:23,940 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf
+2025-09-26 10:25:23,954 - extract_tables2 - INFO - Extraindo páginas: 5-244 (total estimado: 244)
+2025-09-26 10:25:23,955 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:25:59,441 - extract_tables2 - INFO - Encontradas 240 tabelas com método stream
+2025-09-26 10:25:59,509 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:25:59,510 - extract_tables2 - INFO - 0    17,8 °C
+1    17,5 °C
+2    17,5 °C
+3    17,5 °C
+4    17,5 °C
+5    17,5 °C
+6    17,3 °C
+7    17,3 °C
+8    17,3 °C
+9      17 °C
+2025-09-26 10:25:59,540 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:25:59,542 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02    6  25-0 ppm         17.8          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:05    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:08    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:11    6  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:14    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:17    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:20    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:23    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:26    5  25-0 ppm         17.3          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:29    4  25-0 ppm         17.0          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-09-26 10:25:59,546 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf
+2025-09-26 10:25:59,558 - extract_tables2 - INFO - Extraindo páginas: 5-218 (total estimado: 218)
+2025-09-26 10:25:59,558 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:26:29,814 - extract_tables2 - INFO - Encontradas 214 tabelas com método stream
+2025-09-26 10:26:29,898 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:26:29,899 - extract_tables2 - INFO - 0    17,5 °C
+1      18 °C
+2    18,8 °C
+3    19,5 °C
+4      20 °C
+5    20,5 °C
+6    20,8 °C
+7      21 °C
+8    21,5 °C
+9    21,8 °C
+2025-09-26 10:26:29,933 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt3.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:26:29,936 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-07 10:40    0  20-0 ppm         17.5          35-10 °C       69       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:43    0  20-0 ppm         18.0          35-10 °C       68       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:46    0  20-0 ppm         18.8          35-10 °C       65       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:49    0  20-0 ppm         19.5          35-10 °C       64       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:52    0  20-0 ppm         20.0          35-10 °C       63       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:55    0  20-0 ppm         20.5          35-10 °C       61       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 10:58    0  20-0 ppm         20.8          35-10 °C       60       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:01    0  20-0 ppm         21.0          35-10 °C       59       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:04    0  20-0 ppm         21.5          35-10 °C       59       90-40 % aviario_1204_pt3 aviario_1204
+2025-07-07 11:07    0  20-0 ppm         21.8          35-10 °C       58       90-40 % aviario_1204_pt3 aviario_1204
+2025-09-26 10:26:29,940 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf
+2025-09-26 10:26:29,946 - extract_tables2 - INFO - Extraindo páginas: 5-88 (total estimado: 88)
+2025-09-26 10:26:29,946 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:26:42,874 - extract_tables2 - INFO - Encontradas 84 tabelas com método stream
+2025-09-26 10:26:42,900 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:26:42,900 - extract_tables2 - INFO - 0    17,3 °C
+1      17 °C
+2    17,3 °C
+3      17 °C
+4      17 °C
+5      17 °C
+6    16,8 °C
+7    16,8 °C
+8    16,5 °C
+9    16,5 °C
+2025-09-26 10:26:42,913 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1262_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:26:42,915 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-08-01 00:02    1  25-0 ppm         17.3          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:05    1  25-0 ppm         17.0          35-15 °C       56       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:08    1  25-0 ppm         17.3          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:11    1  25-0 ppm         17.0          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:14    1  25-0 ppm         17.0          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:17    1  25-0 ppm         17.0          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:20    1  25-0 ppm         16.8          35-15 °C       57       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:23    1  25-0 ppm         16.8          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:26    1  25-0 ppm         16.5          35-15 °C       58       90-35 % aviario_1262_pt2 aviario_1262
+2025-08-01 00:29    1  25-0 ppm         16.5          35-15 °C       59       90-35 % aviario_1262_pt2 aviario_1262
+2025-09-26 10:26:42,916 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf
+2025-09-26 10:26:42,923 - extract_tables2 - INFO - Extraindo páginas: 5-126 (total estimado: 126)
+2025-09-26 10:26:42,923 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:27:02,148 - extract_tables2 - INFO - Encontradas 122 tabelas com método stream
+2025-09-26 10:27:02,226 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:27:02,227 - extract_tables2 - INFO - 0    20,5 °C
+1    21,5 °C
+2      21 °C
+3      21 °C
+4      21 °C
+5    21,3 °C
+6    21,5 °C
+7    21,5 °C
+8    21,5 °C
+9    21,8 °C
+2025-09-26 10:27:02,265 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt3.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:27:02,269 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-07 10:42    0  20-0 ppm         20.5          35-10 °C       67       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:45    0  20-0 ppm         21.5          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:50    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 10:55    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:00    0  20-0 ppm         21.0          35-10 °C       64       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:05    0  20-0 ppm         21.3          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:10    0  20-0 ppm         21.5          35-10 °C       63       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:15    0  20-0 ppm         21.5          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:20    0  20-0 ppm         21.5          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-07-07 11:25    0  20-0 ppm         21.8          35-10 °C       62       90-40 % aviario_1203_pt3 aviario_1203
+2025-09-26 10:27:02,275 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf
+2025-09-26 10:27:02,303 - extract_tables2 - INFO - Extraindo páginas: 5-244 (total estimado: 244)
+2025-09-26 10:27:02,303 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:27:37,226 - extract_tables2 - INFO - Encontradas 240 tabelas com método stream
+2025-09-26 10:27:37,300 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:27:37,300 - extract_tables2 - INFO - 0    18,3 °C
+1    18,3 °C
+2    18,3 °C
+3    18,3 °C
+4      18 °C
+5      18 °C
+6      18 °C
+7      18 °C
+8      18 °C
+9    17,8 °C
+2025-09-26 10:27:37,332 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:27:37,334 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02   12  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:05   11  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:08   13  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:11   12  25-0 ppm         18.3          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:14   11  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:17   12  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:20   10  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:23   12  25-0 ppm         18.0          35-15 °C       68       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:26   12  25-0 ppm         18.0          35-15 °C       69       90-35 % aviario_1263_pt1 aviario_1263
+2025-07-09 00:29   11  25-0 ppm         17.8          35-15 °C       67       90-35 % aviario_1263_pt1 aviario_1263
+2025-09-26 10:27:37,337 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf
+2025-09-26 10:27:37,346 - extract_tables2 - INFO - Extraindo páginas: 5-140 (total estimado: 140)
+2025-09-26 10:27:37,346 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:27:59,052 - extract_tables2 - INFO - Encontradas 136 tabelas com método stream
+2025-09-26 10:27:59,096 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:27:59,097 - extract_tables2 - INFO - 0    20,5 °C
+1    20,5 °C
+2    20,5 °C
+3    20,3 °C
+4    20,3 °C
+5      20 °C
+6    20,3 °C
+7    20,3 °C
+8      20 °C
+9      20 °C
+2025-09-26 10:27:59,117 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:27:59,120 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-06-01 00:02    1  20-0 ppm         20.5          35-10 °C       56       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:05    1  20-0 ppm         20.5          35-10 °C       56       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:08    2  20-0 ppm         20.5          35-10 °C       58       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:11    1  20-0 ppm         20.3          35-10 °C       56       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:14    2  20-0 ppm         20.3          35-10 °C       57       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:17    1  20-0 ppm         20.0          35-10 °C       58       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:20    1  20-0 ppm         20.3          35-10 °C       57       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:23    2  20-0 ppm         20.3          35-10 °C       59       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:26    1  20-0 ppm         20.0          35-10 °C       57       90-40 % aviario_1204_pt2 aviario_1204
+2025-06-01 00:29    1  20-0 ppm         20.0          35-10 °C       58       90-40 % aviario_1204_pt2 aviario_1204
+2025-09-26 10:27:59,121 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt1.pdf
+2025-09-26 10:27:59,133 - extract_tables2 - INFO - Extraindo páginas: 5-189 (total estimado: 189)
+2025-09-26 10:27:59,133 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:28:28,881 - extract_tables2 - INFO - Encontradas 185 tabelas com método stream
+2025-09-26 10:28:28,943 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:28:28,943 - extract_tables2 - INFO - 0    31,5 °C
+1    31,3 °C
+2    31,5 °C
+3      32 °C
+4      32 °C
+5    31,8 °C
+6    31,8 °C
+7    32,3 °C
+8    32,3 °C
+9      32 °C
+2025-09-26 10:28:28,971 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1204_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:28:28,973 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-05-12 14:40   12 100-0 ppm         31.5           30-0 °C       42       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 14:45   12 100-0 ppm         31.3           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 14:50   11 100-0 ppm         31.5           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 14:55   10 100-0 ppm         32.0           30-0 °C       42       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:00   10 100-0 ppm         32.0           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:05   10 100-0 ppm         31.8           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:10    9 100-0 ppm         31.8           30-0 °C       44       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:15   10 100-0 ppm         32.3           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:17    9 100-0 ppm         32.3           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-05-12 15:17    9 100-0 ppm         32.0           30-0 °C       43       100-0 % aviario_1204_pt1 aviario_1204
+2025-09-26 10:28:28,976 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt2.pdf
+2025-09-26 10:28:28,980 - extract_tables2 - INFO - Extraindo páginas: 5-68 (total estimado: 68)
+2025-09-26 10:28:28,980 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:28:38,446 - extract_tables2 - INFO - Encontradas 64 tabelas com método stream
+2025-09-26 10:28:38,471 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:28:38,471 - extract_tables2 - INFO - 0    21,3 °C
+1    21,3 °C
+2      21 °C
+3      21 °C
+4    20,8 °C
+5    20,5 °C
+6    20,5 °C
+7    20,3 °C
+8      20 °C
+9    20,3 °C
+2025-09-26 10:28:38,487 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:28:38,490 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-06-01 00:02    2  20-0 ppm         21.3          35-10 °C       58       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:07    2  20-0 ppm         21.3          35-10 °C       58       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:17    3  20-0 ppm         21.0          35-10 °C       63       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:22    3  20-0 ppm         21.0          35-10 °C       60       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:32    2  20-0 ppm         20.8          35-10 °C       59       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:37    2  20-0 ppm         20.5          35-10 °C       59       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 00:42    2  20-0 ppm         20.5          35-10 °C       59       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 01:07    2  20-0 ppm         20.3          35-10 °C       60       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 01:12    2  20-0 ppm         20.0          35-10 °C       61       90-40 % aviario_1203_pt2 aviario_1203
+2025-06-01 01:17    2  20-0 ppm         20.3          35-10 °C       61       90-40 % aviario_1203_pt2 aviario_1203
+2025-09-26 10:28:38,491 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt2.pdf
+2025-09-26 10:28:38,497 - extract_tables2 - INFO - Extraindo páginas: 5-79 (total estimado: 79)
+2025-09-26 10:28:38,497 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:28:48,513 - extract_tables2 - INFO - Encontradas 75 tabelas com método stream
+2025-09-26 10:28:48,534 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:28:48,534 - extract_tables2 - INFO - 0    17,8 °C
+1    17,3 °C
+2    17,5 °C
+3    17,3 °C
+4    17,3 °C
+5    17,3 °C
+6    16,8 °C
+7      17 °C
+8    16,8 °C
+9      17 °C
+2025-09-26 10:28:48,544 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1263_pt2.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:28:48,546 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-08-01 00:01    3  25-0 ppm         17.8          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:04    2  25-0 ppm         17.3          35-15 °C       57       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:07    2  25-0 ppm         17.5          35-15 °C       60       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:10    2  25-0 ppm         17.3          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:13    2  25-0 ppm         17.3          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:16    2  25-0 ppm         17.3          35-15 °C       61       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:19    2  25-0 ppm         16.8          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:22    2  25-0 ppm         17.0          35-15 °C       61       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:25    2  25-0 ppm         16.8          35-15 °C       59       90-35 % aviario_1263_pt2 aviario_1263
+2025-08-01 00:28    2  25-0 ppm         17.0          35-15 °C       60       90-35 % aviario_1263_pt2 aviario_1263
+2025-09-26 10:28:48,547 - extract_tables2 - INFO - Iniciando extração do arquivo: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt1.pdf
+2025-09-26 10:28:48,552 - extract_tables2 - INFO - Extraindo páginas: 5-90 (total estimado: 90)
+2025-09-26 10:28:48,552 - extract_tables2 - INFO - Tentando extração com método: stream
+2025-09-26 10:29:02,342 - extract_tables2 - INFO - Encontradas 86 tabelas com método stream
+2025-09-26 10:29:02,365 - extract_tables2 - INFO - Valores brutos de Temperatura antes da limpeza:
+2025-09-26 10:29:02,366 - extract_tables2 - INFO - 0    30,5 °C
+1    31,5 °C
+2    32,5 °C
+3    30,8 °C
+4    29,8 °C
+5      30 °C
+6      30 °C
+7    30,3 °C
+8    30,3 °C
+9    30,5 °C
+2025-09-26 10:29:02,377 - extract_tables2 - INFO - Dados extraídos de /home/brunoconter/Code/Git/testeDiatexCama/data/raw/pdf/aviario_1203_pt1.pdf após tratamento (primeiras 10 linhas):
+2025-09-26 10:29:02,379 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-05-12 14:48    0 100-0 ppm         30.5           30-0 °C       44       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 14:53    0 100-0 ppm         31.5           30-0 °C       43       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 14:58    0 100-0 ppm         32.5           30-0 °C       41       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 15:16   10 100-0 ppm         30.8           30-0 °C       45       100-0 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:10   15  20-0 ppm         29.8           35-0 °C       54       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:15   14  20-0 ppm         30.0           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:20   12  20-0 ppm         30.0           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:25   12  20-0 ppm         30.3           35-0 °C       51       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:30   14  20-0 ppm         30.3           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-05-12 17:35   14  20-0 ppm         30.5           35-0 °C       52       90-40 % aviario_1203_pt1 aviario_1203
+2025-09-26 10:29:02,594 - extract_tables2 - INFO - Dados salvos em: /home/brunoconter/Code/Git/testeDiatexCama/data/raw/csv/dados_medicoes_nh3_20250926_102902.csv
+2025-09-26 10:29:02,595 - extract_tables2 - INFO - Criando banco SQLite e tabela 'medicoes': /home/brunoconter/Code/Git/testeDiatexCama/database/TESTE_DIATEX.db
+2025-09-26 10:29:02,929 - extract_tables2 - INFO - Tabela 'medicoes' criada e dados inseridos com sucesso em: /home/brunoconter/Code/Git/testeDiatexCama/database/TESTE_DIATEX.db
+2025-09-26 10:29:02,934 - extract_tables2 - INFO - Resumo dos dados extraídos após tratamento (primeiras 10 linhas):
+2025-09-26 10:29:02,937 - extract_tables2 - INFO - 
+     Fecha  Hora  NH3 Rango_NH3  Temperatura Rango_Temperatura  Humedad Rango_Humedad     Nome_Arquivo   ID_Aviario
+2025-07-09 00:02    6  25-0 ppm         17.8          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:05    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:08    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:11    6  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:14    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:17    5  25-0 ppm         17.5          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:20    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:23    5  25-0 ppm         17.3          35-15 °C       68       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:26    5  25-0 ppm         17.3          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-07-09 00:29    4  25-0 ppm         17.0          35-15 °C       69       90-35 % aviario_1262_pt1 aviario_1262
+2025-09-26 10:29:02,956 - extract_tables2 - INFO - Processamento concluído com sucesso.

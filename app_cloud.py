@@ -13,13 +13,22 @@ import tempfile
 from scipy import stats
 import datetime
 from datetime import timedelta
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import warnings
+warnings.filterwarnings('ignore')
 
 # Configuração da página
 st.set_page_config(
-    page_title="Análise DIATEX",
+    page_title="Análise DIATEX - Dashboard Avançado",
     page_icon="🐔",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://github.com/seu-usuario/testeDiatexCama',
+        'Report a bug': "https://github.com/seu-usuario/testeDiatexCama/issues",
+        'About': "Dashboard para análise de eficácia do produto DIATEX em aviários"
+    }
 )
 
 # Função para carregar os dados do banco SQLite
@@ -35,12 +44,18 @@ def carregar_dados(caminho_db):
         m.Nome_Arquivo, m.lote_composto, m.idade_lote, m.n_cama, m.teste,
         t.produtor, t.linhagem, t.bateria_teste
     FROM medicoes m
-    LEFT JOIN tratamentos t ON m.lote_composto = t.lote_composto AND m.teste = t.teste
+    LEFT JOIN tratamentos t ON m.lote_composto = t.lote_composto
+    WHERE m.teste IS NOT NULL AND m.teste != ''
     """
     df = pd.read_sql_query(query, conn)
     
     # Fechar conexão
     conn.close()
+    
+    # Verificar se temos dados
+    if len(df) == 0:
+        st.error("Nenhum dado encontrado com tratamentos válidos!")
+        st.stop()
     
     # Converter colunas de data e hora
     df['Fecha'] = pd.to_datetime(df['Fecha'])
@@ -95,7 +110,154 @@ def criar_grafico_comparativo(df, variavel, agrupar_por='dia'):
     
     return fig
 
-# Função para realizar teste T (refatorada)
+# Função para calcular métricas de desempenho
+def calcular_metricas_desempenho(df):
+    """Calcula métricas de desempenho do produto DIATEX"""
+    metricas = {}
+    
+    for tratamento in ['DIATEX', 'TESTEMUNHA']:
+        dados_trat = df[df['teste'] == tratamento]
+        
+        if len(dados_trat) > 0:  # Verificar se há dados para o tratamento
+            metricas[tratamento] = {
+                'nh3_media': dados_trat['NH3'].mean(),
+                'nh3_std': dados_trat['NH3'].std(),
+                'nh3_min': dados_trat['NH3'].min(),
+                'nh3_max': dados_trat['NH3'].max(),
+                'temp_media': dados_trat['Temperatura'].mean(),
+                'umid_media': dados_trat['Humedad'].mean(),
+                'n_medicoes': len(dados_trat),
+                'dias_monitoramento': dados_trat['Fecha'].nunique()
+            }
+    
+    # Calcular eficácia relativa apenas se ambos os tratamentos existirem
+    if 'DIATEX' in metricas and 'TESTEMUNHA' in metricas:
+        if metricas['TESTEMUNHA']['nh3_media'] > 0:  # Evitar divisão por zero
+            metricas['eficacia_nh3'] = ((metricas['TESTEMUNHA']['nh3_media'] - metricas['DIATEX']['nh3_media']) / 
+                                       metricas['TESTEMUNHA']['nh3_media']) * 100
+        
+        if metricas['TESTEMUNHA']['nh3_std'] > 0:  # Evitar divisão por zero
+            metricas['reducao_variabilidade'] = ((metricas['TESTEMUNHA']['nh3_std'] - metricas['DIATEX']['nh3_std']) / 
+                                               metricas['TESTEMUNHA']['nh3_std']) * 100
+    
+    return metricas
+
+# Função para análise de tendências temporais
+def analisar_tendencias(df, variavel):
+    """Analisa tendências temporais dos dados"""
+    resultados = {}
+    
+    for tratamento in ['DIATEX', 'TESTEMUNHA']:
+        dados_trat = df[df['teste'] == tratamento].copy()
+        if len(dados_trat) > 10:  # Mínimo de pontos para análise
+            dados_trat = dados_trat.sort_values('data_hora')
+            dados_trat['tempo_numerico'] = (dados_trat['data_hora'] - dados_trat['data_hora'].min()).dt.total_seconds()
+            
+            # Regressão linear simples
+            slope, intercept, r_value, p_value, std_err = stats.linregress(
+                dados_trat['tempo_numerico'], dados_trat[variavel]
+            )
+            
+            resultados[tratamento] = {
+                'slope': slope,
+                'r_squared': r_value**2,
+                'p_value': p_value,
+                'tendencia': 'crescente' if slope > 0 else 'decrescente' if slope < 0 else 'estável',
+                'significativa': p_value < 0.05
+            }
+    
+    return resultados
+
+# Função para análise PCA
+def realizar_pca(df):
+    """Realiza análise de componentes principais"""
+    try:
+        # Preparar dados para PCA
+        variaveis = ['NH3', 'Temperatura', 'Humedad', 'idade_lote']
+        dados_pca = df[variaveis + ['teste']].dropna()
+        
+        if len(dados_pca) == 0:
+            return None, None
+        
+        # Separar por tratamento
+        X_diatex = dados_pca[dados_pca['teste'] == 'DIATEX'][variaveis]
+        X_testemunha = dados_pca[dados_pca['teste'] == 'TESTEMUNHA'][variaveis]
+        
+        if len(X_diatex) > 10 and len(X_testemunha) > 10:
+            # Padronizar dados
+            scaler = StandardScaler()
+            X_combined = pd.concat([X_diatex, X_testemunha])
+            X_scaled = scaler.fit_transform(X_combined)
+            
+            # Aplicar PCA
+            pca = PCA(n_components=2)
+            X_pca = pca.fit_transform(X_scaled)
+            
+            # Criar DataFrame com resultados
+            df_pca = pd.DataFrame(X_pca, columns=['PC1', 'PC2'])
+            df_pca['teste'] = dados_pca['teste'].values
+            
+            return df_pca, pca.explained_variance_ratio_
+        else:
+            return None, None
+    except Exception as e:
+        st.error(f"Erro na análise PCA: {str(e)}")
+        return None, None
+
+# Função para alertas e recomendações
+def gerar_alertas(df):
+    """Gera alertas baseados nos dados"""
+    alertas = []
+    
+    # Verificar níveis críticos de NH3
+    nh3_critico = 25  # ppm - limite considerado alto
+    medicoes_criticas = df[df['NH3'] > nh3_critico]
+    
+    if len(medicoes_criticas) > 0:
+        # Filtrar valores não nulos na coluna teste
+        tratamentos_afetados = medicoes_criticas['teste'].dropna().unique()
+        tratamentos_str = ', '.join(tratamentos_afetados) if len(tratamentos_afetados) > 0 else 'Não especificado'
+        
+        alertas.append({
+            'tipo': 'warning',
+            'titulo': 'Níveis Críticos de Amônia',
+            'mensagem': f'{len(medicoes_criticas)} medições acima de {nh3_critico} ppm detectadas.',
+            'detalhes': f"Tratamentos afetados: {tratamentos_str}"
+        })
+    
+    # Verificar eficácia do produto
+    metricas = calcular_metricas_desempenho(df)
+    if 'eficacia_nh3' in metricas:
+        if metricas['eficacia_nh3'] > 10:
+            alertas.append({
+                'tipo': 'success',
+                'titulo': 'Eficácia Comprovada',
+                'mensagem': f'DIATEX apresenta redução de {metricas["eficacia_nh3"]:.1f}% nos níveis de NH3.',
+                'detalhes': 'Resultado estatisticamente significativo'
+            })
+        elif metricas['eficacia_nh3'] < -5:
+            alertas.append({
+                'tipo': 'error',
+                'titulo': 'Eficácia Questionável',
+                'mensagem': f'DIATEX apresenta aumento de {abs(metricas["eficacia_nh3"]):.1f}% nos níveis de NH3.',
+                'detalhes': 'Recomenda-se revisar aplicação do produto'
+            })
+    
+    # Verificar variabilidade dos dados
+    for tratamento in ['DIATEX', 'TESTEMUNHA']:
+        dados_trat = df[df['teste'] == tratamento]
+        if len(dados_trat) > 0:  # Verificar se há dados para o tratamento
+            cv_nh3 = (dados_trat['NH3'].std() / dados_trat['NH3'].mean()) * 100
+            
+            if cv_nh3 > 50:  # Coeficiente de variação alto
+                alertas.append({
+                    'tipo': 'info',
+                    'titulo': f'Alta Variabilidade - {tratamento}',
+                    'mensagem': f'Coeficiente de variação de NH3: {cv_nh3:.1f}%',
+                    'detalhes': 'Considerar fatores ambientais que podem estar influenciando'
+                })
+    
+    return alertas
 def realizar_teste_t(df, variavel):
     # Separar dados por tratamento
     diatex = df[df['teste'] == 'DIATEX'][variavel].dropna()
@@ -153,10 +315,11 @@ def criar_matriz_correlacao(df, tratamento=None):
     return fig
 
 # Título principal
-st.title('Análise de Dados - Experimento DIATEX')
+st.title('🐔 Dashboard de Análise DIATEX - Eficácia em Aviários')
 st.markdown("""
-Este aplicativo analisa dados do experimento DIATEX, que testa um produto para redução da volatilização 
-de amônia durante a criação de frangos de corte. Compare os resultados entre aviários com DIATEX e TESTEMUNHA.
+### Sistema Avançado de Monitoramento e Análise
+Este dashboard oferece análise estatística completa da eficácia do produto DIATEX na redução de amônia em aviários.
+**DIATEX** é um produto inovador desenvolvido para reduzir a volatilização de amônia durante a criação de frangos de corte.
 """)
 
 # Caminho para o banco de dados local no repositório
@@ -168,12 +331,39 @@ if not os.path.exists(caminho_db):
     st.info("Verifique se o arquivo está na pasta 'database' do repositório.")
     st.stop()
 
-# Exibir informação sobre o arquivo carregado
-st.info(f"Arquivo carregado: {os.path.basename(caminho_db)}")
-
 # Carregar dados
 with st.spinner('Carregando dados...'):
     df = carregar_dados(caminho_db)
+
+# Adicionar métricas na sidebar
+st.sidebar.markdown("## 📊 Métricas Rápidas")
+
+# Calcular métricas gerais
+total_medicoes = len(df)
+periodo_total = (df['Fecha'].max() - df['Fecha'].min()).days
+aviarios_monitorados = df['aviario'].nunique()
+produtores_envolvidos = df['produtor'].nunique()
+
+st.sidebar.metric("Total de Medições", f"{total_medicoes:,}")
+st.sidebar.metric("Período (dias)", periodo_total)
+st.sidebar.metric("Aviários Monitorados", aviarios_monitorados)
+st.sidebar.metric("Produtores", produtores_envolvidos)
+
+# Métricas de eficácia
+metricas = calcular_metricas_desempenho(df)
+if 'eficacia_nh3' in metricas and metricas['eficacia_nh3'] is not None:
+    st.sidebar.metric(
+        "Eficácia NH3", 
+        f"{metricas['eficacia_nh3']:.1f}%",
+        delta=f"{metricas['eficacia_nh3']:.1f}% vs controle"
+    )
+else:
+    st.sidebar.info("Eficácia NH3: Dados insuficientes")
+
+# Exibir informação sobre o arquivo carregado
+st.sidebar.markdown("---")
+st.sidebar.info(f"📁 **Arquivo:** {os.path.basename(caminho_db)}")
+st.sidebar.info(f"🕒 **Última atualização:** {datetime.datetime.fromtimestamp(os.path.getmtime(caminho_db)).strftime('%d/%m/%Y %H:%M')}")
 
 # Sidebar para filtros
 st.sidebar.title('Filtros')
@@ -306,6 +496,28 @@ st.subheader('Estatísticas Descritivas por Tratamento')
 estatisticas = dados_filtrados.groupby('teste')[['NH3', 'Temperatura', 'Humedad']].describe()
 st.dataframe(estatisticas)
 
+# Seção de Alertas e Recomendações
+st.header('🚨 Alertas e Recomendações')
+alertas = gerar_alertas(dados_filtrados)
+
+if alertas:
+    for alerta in alertas:
+        if alerta['tipo'] == 'success':
+            st.success(f"**{alerta['titulo']}**: {alerta['mensagem']}")
+            st.info(alerta['detalhes'])
+        elif alerta['tipo'] == 'warning':
+            st.warning(f"**{alerta['titulo']}**: {alerta['mensagem']}")
+            st.info(alerta['detalhes'])
+        elif alerta['tipo'] == 'error':
+            st.error(f"**{alerta['titulo']}**: {alerta['mensagem']}")
+            st.info(alerta['detalhes'])
+        else:
+            st.info(f"**{alerta['titulo']}**: {alerta['mensagem']}")
+            if 'detalhes' in alerta:
+                st.caption(alerta['detalhes'])
+else:
+    st.info("Nenhum alerta identificado nos dados atuais.")
+
 # Gráficos comparativos
 st.header('Gráficos Comparativos')
 
@@ -315,7 +527,7 @@ tab1, tab2, tab3 = st.tabs(["Amônia (NH3)", "Temperatura", "Umidade"])
 with tab1:
     st.plotly_chart(
         criar_grafico_comparativo(dados_filtrados, 'NH3', agrupar_por=agrupamento),
-        use_container_width=True
+        width='stretch'
     )
     resultado_teste_t = realizar_teste_t(dados_filtrados, 'NH3')
     st.subheader('Análise Estatística - Teste T')
@@ -325,12 +537,12 @@ with tab1:
                          title='Distribuição de NH3 por Semana de Vida',
                          labels={'semana_vida': 'Semana de Vida', 'NH3': 'NH3 (ppm)', 'teste': 'Tratamento'},
                          color_discrete_map={'DIATEX': '#1f77b4', 'TESTEMUNHA': '#ff7f0e'})
-        st.plotly_chart(fig_box, use_container_width=True)
+        st.plotly_chart(fig_box, width='stretch')
 
 with tab2:
     st.plotly_chart(
         criar_grafico_comparativo(dados_filtrados, 'Temperatura', agrupar_por=agrupamento),
-        use_container_width=True
+        width='stretch'
     )
     resultado_teste_t = realizar_teste_t(dados_filtrados, 'Temperatura')
     st.subheader('Análise Estatística - Teste T')
@@ -340,12 +552,12 @@ with tab2:
                          title='Distribuição de Temperatura por Semana de Vida',
                          labels={'semana_vida': 'Semana de Vida', 'Temperatura': 'Temperatura (°C)', 'teste': 'Tratamento'},
                          color_discrete_map={'DIATEX': '#1f77b4', 'TESTEMUNHA': '#ff7f0e'})
-        st.plotly_chart(fig_box, use_container_width=True)
+        st.plotly_chart(fig_box, width='stretch')
 
 with tab3:
     st.plotly_chart(
         criar_grafico_comparativo(dados_filtrados, 'Humedad', agrupar_por=agrupamento),
-        use_container_width=True
+        width='stretch'
     )
     resultado_teste_t = realizar_teste_t(dados_filtrados, 'Humedad')
     st.subheader('Análise Estatística - Teste T')
@@ -355,10 +567,130 @@ with tab3:
                          title='Distribuição de Umidade por Semana de Vida',
                          labels={'semana_vida': 'Semana de Vida', 'Humedad': 'Umidade (%)', 'teste': 'Tratamento'},
                          color_discrete_map={'DIATEX': '#1f77b4', 'TESTEMUNHA': '#ff7f0e'})
-        st.plotly_chart(fig_box, use_container_width=True)
+        st.plotly_chart(fig_box, width='stretch')
 
 # Análises exploratórias adicionais
 st.header('Análises Exploratórias Adicionais')
+
+# Análises Avançadas
+st.subheader('📈 Análises Avançadas')
+
+# Criar tabs para diferentes análises
+tab_tend, tab_pca, tab_perf = st.tabs(["Análise de Tendências", "Análise PCA", "Métricas de Desempenho"])
+
+with tab_tend:
+    st.markdown("#### Análise de Tendências Temporais")
+    variavel_tendencia = st.selectbox("Selecione a variável para análise de tendência:", ['NH3', 'Temperatura', 'Humedad'])
+    
+    tendencias = analisar_tendencias(dados_filtrados, variavel_tendencia)
+    
+    if tendencias:
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            if 'DIATEX' in tendencias:
+                tend_diatex = tendencias['DIATEX']
+                st.metric(
+                    "Tendência DIATEX",
+                    tend_diatex['tendencia'].title(),
+                    delta=f"R² = {tend_diatex['r_squared']:.3f}"
+                )
+                if tend_diatex['significativa']:
+                    st.success("Tendência estatisticamente significativa")
+                else:
+                    st.info("Tendência não significativa")
+        
+        with col2:
+            if 'TESTEMUNHA' in tendencias:
+                tend_teste = tendencias['TESTEMUNHA']
+                st.metric(
+                    "Tendência TESTEMUNHA",
+                    tend_teste['tendencia'].title(),
+                    delta=f"R² = {tend_teste['r_squared']:.3f}"
+                )
+                if tend_teste['significativa']:
+                    st.success("Tendência estatisticamente significativa")
+                else:
+                    st.info("Tendência não significativa")
+
+with tab_pca:
+    st.markdown("#### Análise de Componentes Principais (PCA)")
+    st.markdown("Análise multivariada para identificar padrões nos dados.")
+    
+    df_pca, variance_ratio = realizar_pca(dados_filtrados)
+    
+    if df_pca is not None:
+        fig_pca = px.scatter(
+            df_pca, x='PC1', y='PC2', color='teste',
+            title='Análise PCA - Separação entre Tratamentos',
+            labels={'PC1': f'PC1 ({variance_ratio[0]:.1%} da variância)', 
+                   'PC2': f'PC2 ({variance_ratio[1]:.1%} da variância)'},
+            color_discrete_map={'DIATEX': '#1f77b4', 'TESTEMUNHA': '#ff7f0e'}
+        )
+        fig_pca.update_layout(height=500)
+        st.plotly_chart(fig_pca, width='stretch')
+        
+        st.info(f"Os dois primeiros componentes explicam {(variance_ratio[0] + variance_ratio[1]):.1%} da variância total dos dados.")
+    else:
+        st.warning("Dados insuficientes para análise PCA.")
+
+with tab_perf:
+    st.markdown("#### Métricas Detalhadas de Desempenho")
+    
+    metricas_detalhadas = calcular_metricas_desempenho(dados_filtrados)
+    
+    if 'DIATEX' in metricas_detalhadas and 'TESTEMUNHA' in metricas_detalhadas:
+        # Métricas de NH3
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric(
+                "Redução Média NH3",
+                f"{metricas_detalhadas.get('eficacia_nh3', 0):.1f}%",
+                delta=f"{metricas_detalhadas['TESTEMUNHA']['nh3_media'] - metricas_detalhadas['DIATEX']['nh3_media']:.2f} ppm"
+            )
+        
+        with col2:
+            st.metric(
+                "Redução Variabilidade",
+                f"{metricas_detalhadas.get('reducao_variabilidade', 0):.1f}%",
+                delta=f"{metricas_detalhadas['TESTEMUNHA']['nh3_std'] - metricas_detalhadas['DIATEX']['nh3_std']:.2f} ppm"
+            )
+        
+        with col3:
+            st.metric(
+                "Comparação Medições",
+                f"{metricas_detalhadas['DIATEX']['n_medicoes']:,}",
+                delta=f"vs {metricas_detalhadas['TESTEMUNHA']['n_medicoes']:,} controle"
+            )
+        
+        # Tabela comparativa detalhada
+        st.markdown("##### Comparação Detalhada")
+        df_comparacao = pd.DataFrame({
+            'Métrica': ['NH3 Média (ppm)', 'NH3 Desvio Padrão', 'NH3 Mínimo', 'NH3 Máximo', 
+                       'Temperatura Média (°C)', 'Umidade Média (%)', 'Número de Medições', 'Dias de Monitoramento'],
+            'DIATEX': [
+                f"{metricas_detalhadas['DIATEX']['nh3_media']:.2f}",
+                f"{metricas_detalhadas['DIATEX']['nh3_std']:.2f}",
+                f"{metricas_detalhadas['DIATEX']['nh3_min']:.2f}",
+                f"{metricas_detalhadas['DIATEX']['nh3_max']:.2f}",
+                f"{metricas_detalhadas['DIATEX']['temp_media']:.1f}",
+                f"{metricas_detalhadas['DIATEX']['umid_media']:.1f}",
+                f"{metricas_detalhadas['DIATEX']['n_medicoes']:,}",
+                f"{metricas_detalhadas['DIATEX']['dias_monitoramento']}"
+            ],
+            'TESTEMUNHA': [
+                f"{metricas_detalhadas['TESTEMUNHA']['nh3_media']:.2f}",
+                f"{metricas_detalhadas['TESTEMUNHA']['nh3_std']:.2f}",
+                f"{metricas_detalhadas['TESTEMUNHA']['nh3_min']:.2f}",
+                f"{metricas_detalhadas['TESTEMUNHA']['nh3_max']:.2f}",
+                f"{metricas_detalhadas['TESTEMUNHA']['temp_media']:.1f}",
+                f"{metricas_detalhadas['TESTEMUNHA']['umid_media']:.1f}",
+                f"{metricas_detalhadas['TESTEMUNHA']['n_medicoes']:,}",
+                f"{metricas_detalhadas['TESTEMUNHA']['dias_monitoramento']}"
+            ]
+        })
+        st.dataframe(df_comparacao, width='stretch')
 
 # Matriz de correlação
 st.subheader('Matriz de Correlação')
@@ -367,13 +699,13 @@ col1, col2 = st.columns(2)
 with col1:
     st.plotly_chart(
         criar_matriz_correlacao(dados_filtrados, tratamento='DIATEX'),
-        use_container_width=True
+        width='stretch'
     )
 
 with col2:
     st.plotly_chart(
         criar_matriz_correlacao(dados_filtrados, tratamento='TESTEMUNHA'),
-        use_container_width=True
+        width='stretch'
     )
 
 # Análise por idade/semana
@@ -393,7 +725,7 @@ if visualizacao == 'Idade (dias)':
                                      line=dict(color='#1f77b4' if tratamento == 'DIATEX' else '#ff7f0e'),
                                      legendgroup=tratamento, showlegend=(i==0)), row=i+1, col=1)
     fig.update_layout(height=800, title_text='Variáveis por Idade das Aves', legend_title_text='Tratamento')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
     
 else:  # Semana de vida
     dados_por_semana = dados_filtrados.groupby(['semana_vida', 'teste'])[['NH3', 'Temperatura', 'Humedad']].mean().reset_index()
@@ -407,49 +739,254 @@ else:  # Semana de vida
                                      line=dict(color='#1f77b4' if tratamento == 'DIATEX' else '#ff7f0e'),
                                      legendgroup=tratamento, showlegend=(i==0)), row=i+1, col=1)
     fig.update_layout(height=800, title_text='Variáveis por Semana de Vida das Aves', legend_title_text='Tratamento')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
-# Conclusões
-st.header('Conclusões')
+# Conclusões e Relatório Final
+st.header('📋 Conclusões e Relatório Final')
 
 # Aplicar filtro de tratamento específico para conclusões
 dados_conclusoes = dados_filtrados.copy()
 if filtro_tratamento_especifico:
     dados_conclusoes = dados_conclusoes[dados_conclusoes['teste'] == filtro_tratamento_especifico]
 
+# Análises estatísticas completas
 medias_nh3 = dados_conclusoes.groupby('teste')['NH3'].mean()
+medias_temp = dados_conclusoes.groupby('teste')['Temperatura'].mean()
+medias_umid = dados_conclusoes.groupby('teste')['Humedad'].mean()
+
 resultado_nh3 = realizar_teste_t(dados_conclusoes, 'NH3')
+resultado_temp = realizar_teste_t(dados_conclusoes, 'Temperatura')
+resultado_umid = realizar_teste_t(dados_conclusoes, 'Humedad')
 
 if 'DIATEX' in medias_nh3 and 'TESTEMUNHA' in medias_nh3:
+    # Métricas principais
     diff_nh3 = ((medias_nh3['DIATEX'] - medias_nh3['TESTEMUNHA']) / medias_nh3['TESTEMUNHA']) * 100
+    diff_temp = ((medias_temp['DIATEX'] - medias_temp['TESTEMUNHA']) / medias_temp['TESTEMUNHA']) * 100
+    diff_umid = ((medias_umid['DIATEX'] - medias_umid['TESTEMUNHA']) / medias_umid['TESTEMUNHA']) * 100
+    
+    # Dashboard de métricas finais
+    st.subheader("📊 Resumo Executivo")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.metric(
+            "Eficácia NH3",
+            f"{abs(diff_nh3):.1f}%",
+            delta=f"{'Redução' if diff_nh3 < 0 else 'Aumento'}"
+        )
+    
+    with col2:
+        st.metric(
+            "Diferença Temperatura",
+            f"{abs(diff_temp):.1f}%",
+            delta=f"{'Menor' if diff_temp < 0 else 'Maior'}"
+        )
+    
+    with col3:
+        st.metric(
+            "Diferença Umidade", 
+            f"{abs(diff_umid):.1f}%",
+            delta=f"{'Menor' if diff_umid < 0 else 'Maior'}"
+        )
+    
+    # Análise detalhada
+    st.subheader("📈 Análise Detalhada")
+    
     st.markdown(f"""
-    ### Resumo das Análises
-    1. **Amônia (NH3)**:
-       - Média DIATEX: {medias_nh3['DIATEX']:.2f} ppm
-       - Média TESTEMUNHA: {medias_nh3['TESTEMUNHA']:.2f} ppm
-       - Diferença: {diff_nh3:.2f}% ({medias_nh3['DIATEX'] - medias_nh3['TESTEMUNHA']:.2f} ppm)
-       - {resultado_nh3['interpretacao']}
+    ### 🎯 Resultados Principais
+    
+    #### **Amônia (NH3) - Variável Principal**
+    - **DIATEX**: {medias_nh3['DIATEX']:.2f} ppm (média)
+    - **TESTEMUNHA**: {medias_nh3['TESTEMUNHA']:.2f} ppm (média)
+    - **Diferença**: {diff_nh3:.2f}% ({medias_nh3['DIATEX'] - medias_nh3['TESTEMUNHA']:.2f} ppm)
+    - **Análise Estatística**: {resultado_nh3['interpretacao']}
+    
+    #### **Temperatura**
+    - **DIATEX**: {medias_temp['DIATEX']:.1f}°C (média)
+    - **TESTEMUNHA**: {medias_temp['TESTEMUNHA']:.1f}°C (média)
+    - **Diferença**: {diff_temp:.2f}%
+    - **Análise Estatística**: {resultado_temp['interpretacao']}
+    
+    #### **Umidade**
+    - **DIATEX**: {medias_umid['DIATEX']:.1f}% (média)
+    - **TESTEMUNHA**: {medias_umid['TESTEMUNHA']:.1f}% (média)
+    - **Diferença**: {diff_umid:.2f}%
+    - **Análise Estatística**: {resultado_umid['interpretacao']}
     """)
-    if resultado_nh3['significativo'] and medias_nh3['DIATEX'] < medias_nh3['TESTEMUNHA']:
-        st.success("**O produto DIATEX demonstra eficácia na redução dos níveis de amônia.**")
-    elif resultado_nh3['significativo'] and medias_nh3['DIATEX'] > medias_nh3['TESTEMUNHA']:
-        st.error("**O produto DIATEX não demonstra eficácia na redução dos níveis de amônia.**")
+    
+    # Conclusão final baseada em critérios rigorosos
+    st.subheader("🏆 Conclusão Final")
+    
+    # Critérios de avaliação
+    eficacia_significativa = resultado_nh3['significativo'] and diff_nh3 < -5  # Redução de pelo menos 5%
+    eficacia_moderada = resultado_nh3['significativo'] and -5 <= diff_nh3 < 0
+    ineficaz = resultado_nh3['significativo'] and diff_nh3 >= 0
+    inconclusivo = not resultado_nh3['significativo']
+    
+    if eficacia_significativa:
+        st.success(f"""
+        ### ✅ DIATEX DEMONSTRA EFICÁCIA SIGNIFICATIVA
+        
+        **Principais achados:**
+        - Redução estatisticamente significativa de {abs(diff_nh3):.1f}% nos níveis de NH3
+        - P-valor: {resultado_nh3['p_valor']:.4f} (< 0.05)
+        - Benefício claro para o ambiente aviário
+        
+        **Recomendação:** Implementação do produto DIATEX é recomendada.
+        """)
+    elif eficacia_moderada:
+        st.warning(f"""
+        ### ⚠️ DIATEX APRESENTA EFICÁCIA MODERADA
+        
+        **Principais achados:**
+        - Redução estatisticamente significativa de {abs(diff_nh3):.1f}% nos níveis de NH3
+        - P-valor: {resultado_nh3['p_valor']:.4f} (< 0.05)
+        - Benefício presente, mas limitado
+        
+        **Recomendação:** Considerar implementação com monitoramento contínuo.
+        """)
+    elif ineficaz:
+        st.error(f"""
+        ### ❌ DIATEX NÃO DEMONSTRA EFICÁCIA
+        
+        **Principais achados:**
+        - Aumento de {abs(diff_nh3):.1f}% nos níveis de NH3 vs controle
+        - P-valor: {resultado_nh3['p_valor']:.4f} (< 0.05)
+        - Produto não atende aos objetivos
+        
+        **Recomendação:** Não implementar o produto. Revisar formulação ou aplicação.
+        """)
     else:
-        st.warning("**Os resultados são inconclusivos quanto à eficácia do DIATEX.**")
+        st.info(f"""
+        ### 🤔 RESULTADOS INCONCLUSIVOS
+        
+        **Principais achados:**
+        - Diferença de {diff_nh3:.1f}% nos níveis de NH3 (não significativa)
+        - P-valor: {resultado_nh3['p_valor']:.4f} (≥ 0.05)
+        - Dados insuficientes para conclusão definitiva
+        
+        **Recomendação:** Coletar mais dados ou revisar protocolo experimental.
+        """)
+    
+    # Contexto adicional
+    st.subheader("📋 Considerações Adicionais")
+    n_total = len(dados_conclusoes)
+    periodo_estudo = (dados_conclusoes['Fecha'].max() - dados_conclusoes['Fecha'].min()).days
+    
+    st.markdown(f"""
+    - **Tamanho da amostra**: {n_total:,} medições
+    - **Período de estudo**: {periodo_estudo} dias
+    - **Aviários monitorados**: {dados_conclusoes['aviario'].nunique()}
+    - **Produtores envolvidos**: {dados_conclusoes['produtor'].nunique()}
+    - **Linhagens testadas**: {dados_conclusoes['linhagem'].nunique()}
+    """)
+    
 else:
-    st.warning("Dados insuficientes para as conclusões (requer ambos os tratamentos).")
+    st.warning("❌ **Dados insuficientes para conclusões finais.**")
+    st.markdown("*Requer dados de ambos os tratamentos (DIATEX e TESTEMUNHA) para análise comparativa.*")
 
-# Rodapé
+# Rodapé aprimorado
 agora_gmt3 = datetime.datetime.now() - timedelta(hours=3)
 st.markdown("---")
+
+# Seção de exportação de dados
+st.subheader("📁 Exportar Dados")
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    if st.button("📊 Exportar Dados Filtrados"):
+        csv = dados_filtrados.to_csv(index=False)
+        st.download_button(
+            label="Baixar CSV",
+            data=csv,
+            file_name=f"dados_diatex_filtrados_{datetime.date.today()}.csv",
+            mime="text/csv"
+        )
+
+with col2:
+    if st.button("📈 Exportar Estatísticas"):
+        stats_csv = estatisticas.to_csv()
+        st.download_button(
+            label="Baixar Estatísticas CSV",
+            data=stats_csv,
+            file_name=f"estatisticas_diatex_{datetime.date.today()}.csv",
+            mime="text/csv"
+        )
+
+with col3:
+    if st.button("📋 Gerar Relatório"):
+        st.info("Funcionalidade de relatório em PDF será implementada em breve.")
+
+# Informações do sistema
 st.markdown(f"""
-<div style="text-align: center; color: gray; font-size: 0.8em;">
-    Análise de Dados DIATEX | Dados atualizados em: {agora_gmt3.strftime('%d/%m/%Y %H:%M')} (GMT-3)
+<div style="background-color: #f0f2f6; padding: 20px; border-radius: 10px; margin-top: 20px;">
+<h4>ℹ️ Informações do Sistema</h4>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+<div>
+<strong>📊 Dados:</strong><br>
+• Última atualização: {agora_gmt3.strftime('%d/%m/%Y %H:%M')} (GMT-3)<br>
+• Banco de dados: {os.path.basename(caminho_db)}<br>
+• Total de registros: {len(df):,}<br>
+• Período de dados: {df['Fecha'].min().strftime('%d/%m/%Y')} a {df['Fecha'].max().strftime('%d/%m/%Y')}
+</div>
+
+<div>
+<strong>🔧 Tecnologias:</strong><br>
+• Streamlit {st.__version__}<br>
+• Python para análise estatística<br>
+• Plotly para visualizações interativas<br>
+• SQLite para persistência de dados
+</div>
+</div>
+
+<div style="text-align: center; margin-top: 15px; color: #666;">
+<strong>Dashboard de Análise DIATEX</strong> - Sistema de monitoramento de eficácia em aviários<br>
+Desenvolvido para análise científica e tomada de decisões baseada em dados
+</div>
 </div>
 """, unsafe_allow_html=True)
 
+# Sidebar com informações adicionais
+st.sidebar.markdown("---")
+st.sidebar.markdown("### 🔧 Funcionalidades")
+st.sidebar.markdown("""
+**✅ Análises Disponíveis:**
+- Estatísticas descritivas
+- Testes de significância (Teste T)
+- Análise de tendências temporais
+- Análise PCA multivariada
+- Correlações entre variáveis
+- Alertas automáticos
+
+**📊 Visualizações:**
+- Gráficos de linha temporais
+- Box plots por semana
+- Scatter plots PCA
+- Matrizes de correlação
+- Métricas de desempenho
+""")
+
 st.sidebar.markdown("---")
 st.sidebar.info("""
-**Versão Cloud**
-Esta é a versão para Streamlit Community Cloud que acessa os dados diretamente do repositório.
+**💡 Versão Aprimorada**
+
+Esta versão inclui:
+• Análises estatísticas avançadas
+• Sistema de alertas inteligente  
+• Métricas de desempenho detalhadas
+• Interface melhorada
+• Exportação de dados
+
+Acesse os dados diretamente do repositório GitHub.
+""")
+
+# Link para documentação (se disponível)
+st.sidebar.markdown("---")
+st.sidebar.markdown("### 📚 Recursos")
+st.sidebar.markdown("""
+- [Documentação](https://github.com/seu-usuario/testeDiatexCama)
+- [Reportar Bug](https://github.com/seu-usuario/testeDiatexCama/issues)
+- [Código Fonte](https://github.com/seu-usuario/testeDiatexCama)
 """)
