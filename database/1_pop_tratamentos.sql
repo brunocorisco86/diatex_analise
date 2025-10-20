@@ -34,27 +34,27 @@ CREATE TABLE tratamentos (
 -- DARLAN SIMON
 -- lote 1203-24
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor) 
-VALUES ('aviario_1203','1203-24',1,'2025-05-12','2025-06-28','ROSS','DIATEX','DARLAN SIMON',6,33900, 14,47,185,480,970,1480,2300,3000,3307,45,'0100066776-16224','PLUSVAL-IPORA','ISOTERMICO','',14.49,'24M0004');
+VALUES ('aviario_1203','1203-24',1,'2025-05-12','2025-06-28','ROSS','DIATEX','DARLAN SIMON',6,33900,14,47,185,480,970,1480,2300,3000,3307,45,'0100066776-16224','PLUSVAL-IPORA','ISOTERMICO','',14.49,'24M0004');
 
 -- lote 1204-24
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
-VALUES ('aviario_1204','1204-24',1,'2025-05-12','2025-06-28','ROSS','TESTEMUNHA','DARLAN SIMON',6,33900, 14,46,190,470,960,1460,2250,2950,3260,50,'0100066776-16224','PLUSVAL-IPORA','ISOTERMICO','',4.73,'24M0003');
+VALUES ('aviario_1204','1204-24',1,'2025-05-12','2025-06-28','ROSS','TESTEMUNHA','DARLAN SIMON',6,33900,14,46,190,470,960,1460,2250,2950,3260,50,'0100066776-16224','PLUSVAL-IPORA','ISOTERMICO','',4.73,'24M0003');
 
 -- lote 1203-25 (lote 2)
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor) 
-VALUES ('aviario_1203','1203-25',2,'2025-07-17','2025-08-08','ROSS','DIATEX','DARLAN SIMON',7,'','','','','','','','','','','','','','','','','24M0004');
+VALUES ('aviario_1203','1203-25',2,'2025-07-17','2025-08-08','ROSS','DIATEX','DARLAN SIMON',7,33900,'','','','','','','','','','','','','','','','24M0004');
 
 -- lote 1204-25 (lote 2)
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
-VALUES ('aviario_1204','1204-25',2,'2025-07-17','2025-08-08','ROSS','TESTEMUNHA','DARLAN SIMON',7,'','','','','','','','','','','','','','','','','24M0003');
+VALUES ('aviario_1204','1204-25',2,'2025-07-17','2025-08-08','ROSS','TESTEMUNHA','DARLAN SIMON',7,33900,'','','','','','','','','','','','','','','','24M0003');
 
--- lote 1203-26 (lote 2)
+-- lote 1203-26 (lote 3)
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor) 
-VALUES ('aviario_1203','1203-26',3,'2025-09-17','','','DIATEX','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0004');
+VALUES ('aviario_1203','1203-26',3,'2025-09-17','2025-10-20','COBB MALE','DIATEX','DARLAN SIMON',8,33900,'','','','','','','','','','','','','','','','24M0004');
 
--- lote 1204-26 (lote 2)
+-- lote 1204-26 (lote 3)
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
-VALUES ('aviario_1204','1204-26',3,'2025-09-17','','','TESTEMUNHA','DARLAN SIMON',8,'','','','','','','','','','','','','','','','','24M0003');
+VALUES ('aviario_1204','1204-26',3,'2025-09-17','2025-10-20','COBB MALE','TESTEMUNHA','DARLAN SIMON',8,33900,'','','','','','','','','','','','','','','','24M0003');
 
 -- GRANJA FAMILIA BELTRAMIN
 
@@ -70,12 +70,12 @@ VALUES ('aviario_1262','1262-19',1,'2025-08-20','','COBB MALE','DIATEX','FAMILIA
 
 -- LOTE 1282-19
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
-VALUES ('aviario_1282','1282-19',1,'2025-08-20','','COBB MALE','TESTEMUNHA','JAIME BASSO',5,'', '','','','','','','','','','','','','','','','24M0009');
+VALUES ('aviario_1282','1282-19',1,'2025-08-20','2025-08-30','COBB MALE','TESTEMUNHA','JAIME BASSO',5,'', '','','','','','','','','','','','','','','','24M0009');
 
 
 -- LOTE 1283-19
 INSERT INTO tratamentos (aviario,lote_composto,bateria_teste,data_alojamento,data_retirada,linhagem,teste,produtor,n_cama,aves_alojadas,vazio,peso_alojamento,peso_7d,peso_14d,peso_21d,peso_28d,peso_35d,peso_42d,peso_abate,idade_matriz,matriz_alojada,origem,tipo_aviario,pc_cond_pes,pc_cond_aero,id_sensor)
-VALUES ('aviario_1282','1283-19',1,'2025-08-20','','COBB MALE','TESTEMUNHA','JAIME BASSO',5,'', '','','','','','','','','','','','','','','','24M0002');
+VALUES ('aviario_1282','1283-19',1,'2025-08-20','2025-08-30','COBB MALE','TESTEMUNHA','JAIME BASSO',5,'', '','','','','','','','','','','','','','','','24M0002');
 
 
 -- Adicionar o fator de ganho dos lotes
